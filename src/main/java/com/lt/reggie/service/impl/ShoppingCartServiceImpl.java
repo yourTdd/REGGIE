@@ -41,9 +41,11 @@ public class ShoppingCartServiceImpl extends ServiceImpl<ShoppingCartMapper, Sho
 
         ShoppingCart one = this.getOne(qw);
 
+
         if (one!=null){
             // 已经存在，原来数量+1
             Integer number = one.getNumber();
+            one.setUserId(currentId);
             one.setNumber(number+1);
             this.updateById(one);
         }else {
